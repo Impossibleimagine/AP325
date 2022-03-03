@@ -9,7 +9,8 @@ using namespace std;
 vector <int> v,p,pp,q,qq;
 //set <int> st;
 //map <int, int> mp;
-
+int cut(int,int);
+int ans=0;
 signed main()
 {
     LoveRem
@@ -45,20 +46,62 @@ signed main()
         int b = qq[i-1] + q[i];
         qq.emplace_back(b);
     }//做從後面的前前綴和
-    /*cout<<"p \n";
-    for(auto i=p.begin();i!=p.end();i++){
-        cout<<*i<<' '<<'\n';
-    }
-    cout<<"pp ";
-    for(auto i=pp.begin();i!=pp.end();i++){
-        cout<<*i<<' '<<'\n';
-    }*/
-    cout<<"q ";
-    for(auto i=q.begin();i!=q.end();i++){
-        cout<<*i<<' '<<'\n';
-    }/*
-    cout<<"qq ";
-    for(auto i=qq.begin();i!=qq.end();i++){
-        cout<<*i<<' '<<'\n';
-    }*/
+    cut(1,2);
 }
+
+int cut(int left,int right)
+{
+    if((right-left)<3||(right-left)<k) return;//小於3或是k終止
+    int c = //找最佳切點的index
+    return v[c];
+
+}
+/*
+a1,a2,a3,a4,a5,a6,a7
+
+p:
+p[0]:a1,
+p[1]:a1+a2,
+p[2]:a1+a2+a3,
+p[3]:a1+a2+a3+a4,
+p[4]:a1+a2+a3+a4+a5,
+p[5]:a1+a2+a3+a4+a5+a6,
+p[6]:a1+a2+a3+a4+a5+a6+a7
+
+pp:
+pp[0]:a1,
+pp[1]:2a1+a2,
+pp[2]:3a1+2a2+a3
+pp[3]:4a1+3a2+2a3+a4
+pp[4]:5a1+4a2+3a3+2a4+a5
+pp[5]:6a1+5a2+4a3+3a4+2a5+a6
+pp[6]:7a1+6a2+5a3+4a4+3a5+2a6+a7
+
+q:
+q[0]:a7
+q[1]:a7+a6
+q[2]:a7+a6+a5
+q[3]:a7+a6+a5+a4
+q[4]:a7+a6+a5+a4+a3
+q[5]:a7+a6+a5+a4+a3+a2
+q[6]:a7+a6+a5+a4+a3+a2+a1
+
+qq:
+qq[0]:a7
+qq[1]:2a7+a6
+qq[2]:3a7+2a6+a5
+qq[3]:4a7+3a6+2a5+a4
+qq[4]:5a7+4a6+3a5+2a4+a3
+qq[5]:6a7+5a6+4a5+3a4+2a3+a2
+qq[6]:7a7+6a6+5a5+4a4+3a3+2a2+a1
+
+a1 = qq[5]
+a2 = qq[4] + p[0]
+a3 = qq[3] + p[1]
+a4 = qq[2] + p[2]
+a5 = qq[1] + p[3]
+a6 = qq[0] + p[4]
+a7 = p[5]
+
+
+*/
