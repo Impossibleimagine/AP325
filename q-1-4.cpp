@@ -9,8 +9,9 @@ using namespace std;
 vector <int> v,p,pp,q,qq;
 //set <int> st;
 //map <int, int> mp;
-int cut(int,int);
+int cut(int,int,int);
 int ans=0;
+int cuttime;
 signed main()
 {
     LoveRem
@@ -46,12 +47,14 @@ signed main()
         int b = qq[i-1] + q[i];
         qq.emplace_back(b);
     }//做從後面的前前綴和
-    cut(1,2);
+    cut(1,n,k);
 }
 
-int cut(int left,int right)
+int cut(int left,int right,int cuttime)
 {
-    if((right-left)<3||(right-left)<k) return;//小於3或是k終止
+    cuttime-=1;//切的次數加一
+    if((right-left)<2||cuttime<1) return 0;//小於3或是k終止
+    for(int i=left+1;i<)
     int c = //找最佳切點的index
     return v[c];
 
