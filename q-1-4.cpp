@@ -50,7 +50,7 @@ signed main()
     for(int i=1;i<n;i++){
         int b = qq[i-1] + q[i];
         qq.emplace_back(b);
-        cout<<qq[i]<<'\n';
+        //cout<<qq[i]<<'\n';
     }//做從後面的前前綴和
     cut(0,n-4,k);
     //cout<<ans<<'\n';
@@ -61,25 +61,27 @@ void cut(int left,int right,int cuttime)
     if((right-left)<2||cuttime<1) return;//小於3或是k終止
     cuttime-=1;//切的次數加一
     //left = left+1,right = right-1;//更新l,r的值
-    int cot = left;
+    int cot = left+1;
     int m=1e9,mind=-1;
     int sum[100000]={0};
     for(int i=right-2;i>=0;i--){
-        sum[cot]=qq[i]-pp[(right-2)-i];
+        //cout<<qq[i]<<' '<<pp[(right-2)-i]<<'\n';
+        sum[cot]=abs(qq[i]-pp[(right-2)-i]);
         //cout<<sum[cot]<<' '<<cot<<'\n';
         /**
         if(sum[cot]<m){
             m=sum[cot];
             mind=cot+1;
         }
-        cot+=1;
         **/
+        cot+=1;
+
     }
     //ans+=v[mind];
     //cut(0,mind-1,cuttime);
     //cut(mind,right+1,cuttime);
     //cout<<m<<' '<<mind;
-    //for(int i=0;i<7;i++) cout<<sum[i]<<' ';
+    for(int i=0;i<7;i++) cout<<sum[i]<<' ';
 
 }
 /*
@@ -117,10 +119,10 @@ qq[4]:5a7+4a6+3a5+2a4+a3
 qq[5]:6a7+5a6+4a5+3a4+2a3+a2
 qq[6]:7a7+6a6+5a5+4a4+3a3+2a2+a1
 a1 = qq[5]
-a2 = qq[4] + pp[0]
-a3 = qq[3] + pp[1]
-a4 = qq[2] + pp[2]
-a5 = qq[1] + pp[3]
-a6 = qq[0] + pp[4]
+a2 = qq[4] - pp[0]
+a3 = qq[3] - pp[1]
+a4 = qq[2] - pp[2]
+a5 = qq[1] - pp[3]
+a6 = qq[0] - pp[4]
 a7 = pp[5]
 */
